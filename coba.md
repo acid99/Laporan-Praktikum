@@ -6,7 +6,7 @@
 
 ### **Pastikan juga anda telah melakukan latihan praktikum modul 1**
 
-####
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1. Rename ubuntu_php5.6 menjadi ubuntu_landing serta ubah IP mengikuti skema baru, seperti dibawah ini
 
