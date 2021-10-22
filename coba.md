@@ -5,10 +5,7 @@
     <b>Kelompok 8</b>
 </h2>
 
-
-
 **Pastikan sebelum melakukan tutorial di bawah, harap backup server terlebih dahulu untuk menghindari hal-hal yang tidak diinginkan**
-#
 **Pastikan juga anda telah melakukan latihan praktikum modul 1**
 #
 
