@@ -1,13 +1,11 @@
-<p align="center">
-    <h1 style="text-align:center">
-       <b>Laporan Praktikum Modul 1</b>
-    </h1>
-    <h2 style="text-align:center">
-        <b>Kelompok 8</b>
-    </h2>
-</p>
+<h1 style="text-align:center">
+   <b>Laporan Praktikum Modul 1</b>
+</h1>
+<h2 style="text-align:center">
+    <b>Kelompok 8</b>
+</h2>
 
-#
+
 
 ### **Pastikan sebelum melakukan tutorial di bawah, harap backup server terlebih dahulu untuk menghindari hal-hal yang tidak diinginkan**
 
@@ -17,91 +15,91 @@
 
 1. Rename ubuntu_php5.6 menjadi ubuntu_landing serta ubah IP mengikuti skema baru, seperti dibawah ini
 
-    a. Buka terlebih dahulu ubuntu server di virtual box anda masing masing.
+   a. Buka terlebih dahulu ubuntu server di virtual box anda masing masing.
 
-    b. Setelah itu, login sesuai username dan password yang anda telah buat
+   b. Setelah itu, login sesuai username dan password yang anda telah buat
 
-    c. Ketikkan code di bawah ini untuk mengganti nama LXC Container pada ubuntu server 20.04
+   c. Ketikkan code di bawah ini untuk mengganti nama LXC Container pada ubuntu server 20.04
 
-    <p align="center">
-    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20.png?raw=true">
-    </p>
+   <p align="center">
+   	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20.png?raw=true">
+   </p>
 
-    - Untuk mengecek isi dan kondisi lxc container, apakah lxc sudah distop apa belum, karena jika ingin mengganti nama lxc, lxc harus distop terlebih dahulu
+   - Untuk mengecek isi dan kondisi lxc container, apakah lxc sudah distop apa belum, karena jika ingin mengganti nama lxc, lxc harus distop terlebih dahulu
 
-      ```
-      sudo lxc-ls -f
-      ```
+     ```
+     sudo lxc-ls -f
+     ```
 
-    - Untuk mengganti nama sebuah lxc containers (-R -- rename,  -N --newnamecontainer)
+   - Untuk mengganti nama sebuah lxc containers (-R -- rename,  -N --newnamecontainer)
 
-      ```
-      sudo lxc-copy -R ubuntu_php5.6 -N ubuntu_landing
-      
-      #Cek kondisi lxc container ulang
-      sudo lxc-ls -f
-      ```
+     ```
+     sudo lxc-copy -R ubuntu_php5.6 -N ubuntu_landing
+     
+     #Cek kondisi lxc container ulang
+     sudo lxc-ls -f
+     ```
 
-    d. Menjalankan lxc ubuntu landing dengan kode di bawah ini
+   d. Menjalankan lxc ubuntu landing dengan kode di bawah ini
 
-    <p align="center">
-    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_1.png?raw=true">
-    </p>
+   <p align="center">
+   	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_1.png?raw=true">
+   </p>
 
-    ```
-    #Menjalankan LXC Container
-    sudo lxc-start -n ubuntu_landing -d
-    
-    #Membuka LXC Container
-    sudo lxc-attach -n ubuntu_landing
-    ```
+   ```
+   #Menjalankan LXC Container
+   sudo lxc-start -n ubuntu_landing -d
+   
+   #Membuka LXC Container
+   sudo lxc-attach -n ubuntu_landing
+   ```
 
-    e. Mengganti IP DHCP dari LXC ubuntu_landing menjadi IP static (sesuai ketentuan Soal Praktikum)
+   e. Mengganti IP DHCP dari LXC ubuntu_landing menjadi IP static (sesuai ketentuan Soal Praktikum)
 
-    <p align="center">
-    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_2.png?raw=true">
-    </p>
+   <p align="center">
+   	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_2.png?raw=true">
+   </p>
 
-    ```
-    #Membuka config IP (pada ubuntu_landing base ubuntu 16.04 atau xenial)
-    sudo nano /etc/network/interfaces
-    
-    #Setting IP static 
-    auto eth0
-    iface eth0 inet static
-    	address 10.0.3.103
-    	netmask 255.255.255.0
-    	gateway 10.0.3.1
-    	dns-nameservers 8.8.8.8 1.1.1.1	
-    	
-    #Menyimpan konfigurasi file (tekan pada keyboard anda)
-    Ctrl+X -> Y -> Enter
-    ```
+   ```
+   #Membuka config IP (pada ubuntu_landing base ubuntu 16.04 atau xenial)
+   sudo nano /etc/network/interfaces
+   
+   #Setting IP static 
+   auto eth0
+   iface eth0 inet static
+   	address 10.0.3.103
+   	netmask 255.255.255.0
+   	gateway 10.0.3.1
+   	dns-nameservers 8.8.8.8 1.1.1.1	
+   	
+   #Menyimpan konfigurasi file (tekan pada keyboard anda)
+   Ctrl+X -> Y -> Enter
+   ```
 
-    f. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari ubuntu_landing
+   f. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari ubuntu_landing
 
-    ```
-    #Restart service networking pada ubuntu_landing
-    reboot --kenapa reboot karena jika menggunakan systemctl restart networking.service IP tidak berganti
-    
-    #Membuka LXC Container ubuntu_landing lagi
-    sudo lxc-attach -n ubuntu_landing
-    
-    #Cek IP pada ubuntu_landing
-    ifconfig --IP telah berganti menjadi 10.0.3.103 sesuai ketentuan soal
-    ```
+   ```
+   #Restart service networking pada ubuntu_landing
+   reboot --kenapa reboot karena jika menggunakan systemctl restart networking.service IP tidak berganti
+   
+   #Membuka LXC Container ubuntu_landing lagi
+   sudo lxc-attach -n ubuntu_landing
+   
+   #Cek IP pada ubuntu_landing
+   ifconfig --IP telah berganti menjadi 10.0.3.103 sesuai ketentuan soal
+   ```
 
-    <p align="center">
-    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_3.png?raw=true">
-    </p>
+   <p align="center">
+   	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_3.png?raw=true">
+   </p>
 
-    g. Mencoba cek jaringan dengan ping google
+   g. Mencoba cek jaringan dengan ping google
 
-    <p align="center">
-    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_4.png?raw=true">
-    </p>
+   <p align="center">
+   	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_4.png?raw=true">
+   </p>
 
-    
+   
 
 2. Install lxc debian 9 dengan nama debian_php5.6
 
@@ -132,9 +130,11 @@
 
 
 
+
 <p align="center">
 	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_8.png?raw=true">
 </p>
+
 
 
 
@@ -144,9 +144,11 @@
 
 
 
+
 <p align="center">
 	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_10.png?raw=true">
 </p>
+
 
 
 
@@ -155,9 +157,11 @@
 </p>
 
 
+
 <p align="center">
 	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_12.png?raw=true">
 </p>
+
 
 
 
@@ -167,15 +171,18 @@
 
 
 
+
 <p align="center">
 	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_14.png?raw=true">
 </p>
 
 
 
+
 <p align="center">
 	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_15.png?raw=true">
 </p>
+
 
 
 
@@ -192,31 +199,37 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_17.png?raw=true">
    </p>
+
    
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_18.png?raw=true">
    </p>
+
    
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_19.png?raw=true">
    </p>
+
    
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_20.png?raw=true">
    </p>
+
    
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_21.png?raw=true">
    </p>
+
    
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_22.png?raw=true">
    </p>
+
    
 
    <p align="center">
@@ -232,6 +245,7 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no5/2021-10-20_24.png?raw=true">
    </p>
+
    
 
    <p align="center">
@@ -245,21 +259,25 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-20_26.png?raw=true">
    </p>
+
    
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-20_26_1.png?raw=true">
    </p>
+
    
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-20_27.png?raw=true">
    </p>
+
    
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-20_28.png?raw=true">
    </p>
+
    
 
 
@@ -274,7 +292,7 @@
    - mengakses [http://vm.local](http://vm.local/) akan diarahkan ke http://lxc_landing.dev
 
      <p align="center">
-   	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-21.png?raw=true">
+     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-21.png?raw=true">
      </p>
 
      
@@ -282,7 +300,7 @@
    - mengakses http://vm.local/blog akan diarahkan ke http://lxc_php7.dev
 
      <p align="center">
-   	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-21_2.png?raw=true">
+     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-21_2.png?raw=true">
      </p>
 
      
@@ -292,7 +310,6 @@
      <p align="center">
      	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-21_1.png?raw=true">
      </p>
-
 
 Analisa :
 
