@@ -1,0 +1,5 @@
+8. karena Ubuntu 16.04 telah beralih ke PHP 7.0 dengan infrastruktur baru untuk paket PHP. Jadi, tidak, Anda tidak dapat menginstal php5 di Ubuntu 16.04, 
+
+Linux Containers (LXC) adalah teknologi virtualisasi ringan dan menyediakan sistem virtualisasi perangkat lunak gratis untuk komputer yang menjalankan GNU/Linux. Hal ini dicapai melalui isolasi level kernel, memungkinkan seseorang untuk menjalankan beberapa unit virtual (wadah) secara bersamaan pada Host yang sama.
+
+Proxy server menurut kami adalah sistem yang mengendalikan suatu lalu lintas data contohnya website  agar kemananan dan privasi pengguna internet tersebut tetap bisa terjaga 
