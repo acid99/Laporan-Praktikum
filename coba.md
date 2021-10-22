@@ -7,10 +7,10 @@
 
 
 
-### **Pastikan sebelum melakukan tutorial di bawah, harap backup server terlebih dahulu untuk menghindari hal-hal yang tidak diinginkan**
-
-### #**Pastikan juga anda telah melakukan latihan praktikum modul 1**
-
+**Pastikan sebelum melakukan tutorial di bawah, harap backup server terlebih dahulu untuk menghindari hal-hal yang tidak diinginkan**
+#
+**Pastikan juga anda telah melakukan latihan praktikum modul 1**
+#
 
 
 1. Rename ubuntu_php5.6 menjadi ubuntu_landing serta ubah IP mengikuti skema baru, seperti dibawah ini
