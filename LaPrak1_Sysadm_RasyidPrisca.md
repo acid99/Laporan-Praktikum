@@ -59,6 +59,7 @@ sudo nano /etc/network/interfaces
 	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_2.png?raw=true">
 </p>
 ```
+
 #Menyimpan konfigurasi file (tekan pada keyboard anda)
 Ctrl+X -> Y -> Enter
 ```
@@ -147,12 +148,13 @@ exit
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_8.png?raw=true">
     </p>
     ```
+    
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
     ```
-
+    
     d. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari debian_php5.6
-
+    
     ```
     #Restart service networking pada ubuntu_landing
     reboot
@@ -164,18 +166,18 @@ exit
     #Mengecek IP pada ubuntu_landing
     note:IP telah berganti menjadi 10.0.3.103 sesuai ketentuan soal
     ```
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_9.png?raw=true">
     </p>
     e. Menginstall package nginx untuk proxy server
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_10.png?raw=true">
     </p>
-
+    
     f. Masuk ke dalam direktori nginx, kemudian buat file konfigurasi lxc_php5.6.dev
-
+    
     ```
     #Masuk ke dalam direktori nginx
     cd /etc/nginx/sites-available/
@@ -186,9 +188,9 @@ exit
     #Membuka dan mengedit file konfigurasi
     nano lxc_php5.6.dev
     ```
-
+    
     - Isi file konfigurasi seperti gambar berikut
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_11.png?raw=true">
     </p>
@@ -196,9 +198,9 @@ exit
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
     ```
-    
+
     g. Mengaktifkan konfigurasi nginx
-    
+
     ```
     #Masuk ke direktori sites-enabled
     cd ../sites-enabled
@@ -212,19 +214,19 @@ exit
     #Menyalakan ulang package nginx
     nginx -s reload
     ```
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_12.png?raw=true">
     </p>
     h. Menambah isi file hosts
-    
+
     - Menambahkan hosts bernama lxc_php5.dev dengan IP sama seperti localhost agar file konfigurasi yang telah dibuat bisa terdefinisikan
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_13.png?raw=true">
     </p>
     i. Membuka file index.html agar nantinya ketika masuk ke dalam link URL lxc_php5.dev maka keluar sesuai isi dari file tersebut
-    
+
     ```
     #Masuk ke direktori web
     cd /var/www/html
@@ -238,37 +240,40 @@ exit
     #Membuka dan Mengedit isi file
     nano index.html
     ```
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_14.png?raw=true">
     </p>
     j. Menambahkan isi dari index.html agar ketika dibuka menampilkan informasi dari LXC
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_15.png?raw=true">
     </p>
     ```
+    
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
     ```
-
-k. Mengecek konektivitas dari LXC yang telah dibuat
-
-``` 
-curl -i http://lxc_php5.dev
-```
-
-<p align="center">
-	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_16.png?raw=true">
-</p>
-
-```
-#Keluar di LXC container
-exit
-```
-
-Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ulangi langkah ke 3.
-
+    
+    k. Mengecek konektivitas dari LXC yang telah dibuat
+    
+    ```
+    curl -i http://lxc_php5.dev
+    
+    ```
+    
+    <p align="center">
+    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_16.png?raw=true">
+    </p>
+    
+    ```
+    
+    #Menyimpan konfigurasi file (tekan pada keyboard anda)
+    Ctrl+X -> Y -> Enter
+    ```
+    
+    Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ulangi langkah ke 3.
+    
 4. **Setup nginx pada ubuntu_landing untuk domain http://lxc_landing.dev , buat halaman index.html yang menerangkan informasi nama lxc**
 
    a. Menjalankan LXC ubuntu_landing 
@@ -292,10 +297,11 @@ Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ul
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_18.png?raw=true">
    </p>
    ```
+   
    #Menyimpan konfigurasi file (tekan pada keyboard anda)
    Ctrl+X -> Y -> Enter
    ```
-   
+
    c. Mengaktifkan konfigurasi nginx
 
    ```
@@ -317,12 +323,12 @@ Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ul
    #Membuka dan mengedit isi file hosts
    nano /etc/hosts
    ```
-   
+
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_19.png?raw=true">
    </p>
    d. Mengganti lxc_php5.dev ke lxc_landing.dev
-   
+
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_20.png?raw=true">
    </p>
@@ -330,9 +336,9 @@ Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ul
    #Menyimpan konfigurasi file (tekan pada keyboard anda)
    Ctrl+X -> Y -> Enter
    ```
-   
+
    e. Mengedit file index.html agar nantinya ketika masuk ke dalam link URL lxc_landing.dev maka keluar sesuai isi dari file tersebut
-   
+
    ```
    #Masuk ke direktori web
    cd /var/www/html
@@ -340,12 +346,12 @@ Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ul
    #Membuka dan Mengedit isi file
    nano index.html
    ```
-   
+
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_21.png?raw=true">
    </p>
    f. Mengganti isi dari index.html agar ketika dibuka menampilkan informasi dari LXC ubuntu_landing
-   
+
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_22.png?raw=true">
    </p>
@@ -353,13 +359,13 @@ Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ul
    #Menyimpan konfigurasi file (tekan pada keyboard anda)
    Ctrl+X -> Y -> Enter
    ```
-   
+
    g. Mengecek konektivitas dari LXC yang telah dibuat
-   
+
    ```
    curl -i http://lxc_landing.dev
    ```
-   
+
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_23.png?raw=true">
    </p>
@@ -367,9 +373,9 @@ Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ul
    #Keluar di LXC container
    exit
    ```
+
    
-   
-   
+
 5. **LXC ubuntu_landing harus auto start ketika vm dinyalakan, hal ini digunakan untuk menjaga agar website company profile tidak mengalami  downtime**
 
    a. Untuk mengecek isi dan kondisi lxc container, apakah lxc sudah distop apa belum, karena jika ingin lxc  menjadi autostart ketika vm dinyalakan, lxc harus distop terlebih dahulu 
