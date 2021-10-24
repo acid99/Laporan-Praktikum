@@ -271,12 +271,12 @@
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_16.png?raw=true">
     </p>
     
+    Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ulangi langkah ke 3.
+    
     ```
     #Keluar di LXC container
     exit
     ```
-    
-    Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ulangi langkah ke 3.
     
     
     
@@ -378,12 +378,12 @@
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_23.png?raw=true">
    </p>
 
+   Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ulangi langkah ke 4.
+
    ```
    #Keluar di LXC container
    exit
    ```
-
-   Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ulangi langkah ke 4.
 
    
 
