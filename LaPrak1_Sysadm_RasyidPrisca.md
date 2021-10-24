@@ -15,87 +15,90 @@
     b. Setelah itu, login sesuai username dan password yang anda telah buat
 
     c. Ketikkan code di bawah ini untuk mengganti nama LXC Container pada ubuntu server 20.04
-
-- Untuk mengecek isi dan kondisi lxc container, apakah lxc sudah distop apa belum, karena jika ingin mengganti nama lxc, lxc harus distop terlebih dahulu
-
-  ```
-  sudo lxc-ls -f
-  ```
-
-- Untuk mengganti nama sebuah lxc containers (-R -- rename,  -N --newnamecontainer)
-
-  ```
-  sudo lxc-copy -R ubuntu_php5.6 -N ubuntu_landing
-  
-  #Cek kondisi lxc container ulang
-  sudo lxc-ls -f
-  ```
-
-<p align="center">
-	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20.png?raw=true">
-</p>
-
-d. Menjalankan lxc ubuntu landing dengan kode di bawah ini
-
-```
-#Menjalankan LXC Container
-sudo lxc-start -n ubuntu_landing -d
-
-#Membuka LXC Container
-sudo lxc-attach -n ubuntu_landing
-```
-
-<p align="center">
-	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_1.png?raw=true">
-</p>
-e. Mengganti IP  sesuai ketentuan Soal Praktikum
-
-```
-#Membuka config IP (pada ubuntu_landing base ubuntu 16.04 atau xenial)
-sudo nano /etc/network/interfaces
-```
-
-<p align="center">
-	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_2.png?raw=true">
-</p>
-```
-
-#Menyimpan konfigurasi file (tekan pada keyboard anda)
-Ctrl+X -> Y -> Enter
-```
-
-f. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari ubuntu_landing
-
-```
-#Restart service networking pada ubuntu_landing
-reboot 
-note:kenapa reboot karena jika menggunakan systemctl restart networking.service IP tidak berganti
-
-#Membuka LXC Container ubuntu_landing lagi
-sudo lxc-attach -n ubuntu_landing
-
-#Mengecek IP pada ubuntu_landing
-ifconfig 
-note:IP telah berganti menjadi 10.0.3.103 sesuai ketentuan soal
-```
-
-<p align="center">
-	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_3.png?raw=true">
-</p>
-
-g. Mengecek jaringan internet dan keluar pada LXC ubuntu_landing
-
-```
-#Mengecek jaringan internet
-ping google.com
-
-#Keluar di LXC container
-exit
-```
-
-<p align="center">
-	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_4.png?raw=true">
-</p>
+    
+    - Untuk mengecek isi dan kondisi lxc container, apakah lxc sudah distop apa belum, karena jika ingin mengganti nama lxc, lxc harus distop terlebih dahulu
+    
+      ```
+      sudo lxc-ls -f
+      ```
+    
+    - Untuk mengganti nama sebuah lxc containers (-R -- rename,  -N --newnamecontainer)
+    
+      ```
+      sudo lxc-copy -R ubuntu_php5.6 -N ubuntu_landing
+      
+      #Cek kondisi lxc container ulang
+      sudo lxc-ls -f
+      ```
+    
+      <p align="center">
+      	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20.png?raw=true">
+      </p>
+    
+    d. Menjalankan lxc ubuntu landing dengan kode di bawah ini
+    
+    ```
+    #Menjalankan LXC Container
+    sudo lxc-start -n ubuntu_landing -d
+    
+    #Membuka LXC Container
+    sudo lxc-attach -n ubuntu_landing
+    ```
+    
+    <p align="center">
+    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_1.png?raw=true">
+    </p>
+    
+    e. Mengganti IP  sesuai ketentuan Soal Praktikum
+    
+    ```
+    #Membuka config IP (pada ubuntu_landing base ubuntu 16.04 atau xenial)
+    sudo nano /etc/network/interfaces
+    ```
+    
+    
+    
+    <p align="center">
+    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_2.png?raw=true">
+    </p>
+    
+    ```
+    #Menyimpan konfigurasi file (tekan pada keyboard anda)
+    Ctrl+X -> Y -> Enter
+    ```
+    
+    f. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari ubuntu_landing
+    
+    <p align="center">
+    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_3.png?raw=true">
+    </p>
+    
+    ```
+    #Restart service networking pada ubuntu_landing
+    reboot 
+    note:kenapa reboot karena jika menggunakan systemctl restart networking.service IP tidak berganti
+    
+    #Membuka LXC Container ubuntu_landing lagi
+    sudo lxc-attach -n ubuntu_landing
+    
+    #Mengecek IP pada ubuntu_landing
+    ifconfig 
+    note:IP telah berganti menjadi 10.0.3.103 sesuai ketentuan soal
+    ```
+    
+    g. Mengecek jaringan internet dan keluar pada LXC ubuntu_landing
+    
+    ```
+    #Mengecek jaringan internet
+    ping google.com
+    
+    #Keluar di LXC container
+    exit
+    ```
+    
+    <p align="center">
+    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_4.png?raw=true">
+    </p>
 
 
 2. **Install lxc debian 9 dengan nama debian_php5.6**
@@ -148,13 +151,12 @@ exit
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_8.png?raw=true">
     </p>
     ```
-    
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
     ```
-    
+
     d. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari debian_php5.6
-    
+
     ```
     #Restart service networking pada ubuntu_landing
     reboot
@@ -166,18 +168,18 @@ exit
     #Mengecek IP pada ubuntu_landing
     note:IP telah berganti menjadi 10.0.3.103 sesuai ketentuan soal
     ```
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_9.png?raw=true">
     </p>
     e. Menginstall package nginx untuk proxy server
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_10.png?raw=true">
     </p>
-    
+
     f. Masuk ke dalam direktori nginx, kemudian buat file konfigurasi lxc_php5.6.dev
-    
+
     ```
     #Masuk ke dalam direktori nginx
     cd /etc/nginx/sites-available/
@@ -188,9 +190,9 @@ exit
     #Membuka dan mengedit file konfigurasi
     nano lxc_php5.6.dev
     ```
-    
+
     - Isi file konfigurasi seperti gambar berikut
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_11.png?raw=true">
     </p>
@@ -198,9 +200,9 @@ exit
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
     ```
-
+    
     g. Mengaktifkan konfigurasi nginx
-
+    
     ```
     #Masuk ke direktori sites-enabled
     cd ../sites-enabled
@@ -214,19 +216,19 @@ exit
     #Menyalakan ulang package nginx
     nginx -s reload
     ```
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_12.png?raw=true">
     </p>
     h. Menambah isi file hosts
-
+    
     - Menambahkan hosts bernama lxc_php5.dev dengan IP sama seperti localhost agar file konfigurasi yang telah dibuat bisa terdefinisikan
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_13.png?raw=true">
     </p>
     i. Membuka file index.html agar nantinya ketika masuk ke dalam link URL lxc_php5.dev maka keluar sesuai isi dari file tersebut
-
+    
     ```
     #Masuk ke direktori web
     cd /var/www/html
@@ -240,17 +242,16 @@ exit
     #Membuka dan Mengedit isi file
     nano index.html
     ```
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_14.png?raw=true">
     </p>
     j. Menambahkan isi dari index.html agar ketika dibuka menampilkan informasi dari LXC
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_15.png?raw=true">
     </p>
     ```
-    
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
     ```
@@ -259,7 +260,6 @@ exit
     
     ```
     curl -i http://lxc_php5.dev
-    
     ```
     
     <p align="center">
@@ -267,7 +267,6 @@ exit
     </p>
     
     ```
-    
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
     ```
@@ -297,7 +296,6 @@ exit
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_18.png?raw=true">
    </p>
    ```
-   
    #Menyimpan konfigurasi file (tekan pada keyboard anda)
    Ctrl+X -> Y -> Enter
    ```
