@@ -56,8 +56,6 @@
     sudo nano /etc/network/interfaces
     ```
     
-    
-    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_2.png?raw=true">
     </p>
