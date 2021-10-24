@@ -513,7 +513,7 @@
        <img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-21_2.png?raw=true">
     </p>
 
-   g. Buka browser pada laptop atau komputer, kemudian ketikkan URL http://vm.local/app  (tampilan akan diarahkan ke http://lxc_php5.dev)
+   h. Buka browser pada laptop atau komputer, kemudian ketikkan URL http://vm.local/app  (tampilan akan diarahkan ke http://lxc_php5.dev)
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-21_1.png?raw=true">
