@@ -433,6 +433,7 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-20_26_1.png?raw=true">
    </p>
+
    ```
    #Menyimpan konfigurasi file (tekan pada keyboard anda)
    Ctrl+X -> Y -> Enter
@@ -456,6 +457,7 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-20_28.png?raw=true">
    </p>
+
    ```
    #Menyimpan konfigurasi file (tekan pada keyboard anda)
    Ctrl+X -> Y -> Enter
