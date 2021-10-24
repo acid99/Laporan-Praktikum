@@ -67,10 +67,6 @@
     
     f. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari ubuntu_landing
     
-    <p align="center">
-    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_3.png?raw=true">
-    </p>
-    
     ```
     #Restart service networking pada ubuntu_landing
     reboot 
@@ -83,6 +79,10 @@
     ifconfig 
     note:IP telah berganti menjadi 10.0.3.103 sesuai ketentuan soal
     ```
+    
+    <p align="center">
+    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no1/2021-10-20_3.png?raw=true">
+    </p>
     
     g. Mengecek jaringan internet dan keluar pada LXC ubuntu_landing
     
@@ -157,21 +157,25 @@
     d. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari debian_php5.6
     
     ```
-    #Restart service networking pada ubuntu_landing
+    #Restart service networking pada debian_php5.6
     reboot
     note:kenapa reboot karena jika menggunakan systemctl restart networking.service IP tidak berganti
     
-    #Membuka LXC Container ubuntu_landing lagi
-    sudo lxc-attach -n ubuntu_landing
+    #Membuka LXC Container debian_php5.6 lagi
+    sudo lxc-attach -n debian_php5.6
     
-    #Mengecek IP pada ubuntu_landing
-    note:IP telah berganti menjadi 10.0.3.103 sesuai ketentuan soal
+    #Mengecek IP pada debian_php5.6
+    ifconfig
+    note:IP telah berganti menjadi 10.0.3.2 sesuai ketentuan soal
+    
+    #Mengecek koneksi dengan lxc ubuntu_landing
+    ping 10.0.3.103 
     ```
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_9.png?raw=true">
     </p>
-    e. Menginstall package nginx untuk proxy server
+    e. Menginstall package nginx untuk kebutuhan web dan proxy server
     
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_10.png?raw=true">
@@ -195,7 +199,7 @@
       <p align="center">
       	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_11.png?raw=true">
       </p>
-    
+
       ```
       #Menyimpan konfigurasi file (tekan pada keyboard anda)
       Ctrl+X -> Y -> Enter
@@ -216,14 +220,14 @@
     #Menyalakan ulang package nginx
     nginx -s reload
     ```
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_12.png?raw=true">
     </p>
     h. Menambah isi file hosts
     
     - Menambahkan hosts bernama lxc_php5.dev dengan IP sama seperti localhost agar file konfigurasi yang telah dibuat bisa terdefinisikan
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_13.png?raw=true">
     </p>
@@ -242,11 +246,11 @@
     #Membuka dan Mengedit isi file
     nano index.html
     ```
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_14.png?raw=true">
     </p>
-    j. Menambahkan isi dari index.html agar ketika dibuka menampilkan informasi dari LXC
+    j. Menambahkan isi dari index.html agar ketika dibuka menampilkan informasi dari LXC debian_php5.6
     
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_15.png?raw=true">
@@ -287,13 +291,13 @@
    cd /etc/nginx/sites-available
    
    #Membuka dan Mengedit isi konfigurasi lxc_php5.6.dev
-   nano /etc/php5.6.dev
+   nano lxc_php5.6.dev
    ```
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_17.png?raw=true">
    </p>
-   b.  Mengganti server_name menjadi lxc_landing.dev seperti gambar berikut
+   b.  Mengganti lxc_php5.dev menjadi lxc_landing.dev seperti gambar berikut
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_18.png?raw=true">
@@ -379,11 +383,13 @@
    exit
    ```
 
+   Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ulangi langkah ke 4.
+
    
 
 5. **LXC ubuntu_landing harus auto start ketika vm dinyalakan, hal ini digunakan untuk menjaga agar website company profile tidak mengalami  downtime**
 
-   a. Untuk mengecek isi dan kondisi lxc container, apakah lxc sudah distop apa belum, karena jika ingin lxc  menjadi autostart ketika vm dinyalakan, lxc harus distop terlebih dahulu 
+   a. Untuk mengecek isi dan kondisi lxc container, apakah lxc sudah distop apa belum, karena jika ingin lxc menjadi autostart ketika vm dinyalakan, lxc harus distop terlebih dahulu 
 
    ```
    #Mengecek kondisi LXC
@@ -428,7 +434,7 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-20_26.png?raw=true">
    </p>
-   b. Menambahkan lxc_landing pada file hosts yang IP-nya menyesuaikan ketentuan soal
+   b. Menambahkan lxc_landing.dev pada file hosts yang IP-nya menyesuaikan ketentuan soal
 
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no6/2021-10-20_26_1.png?raw=true">
@@ -446,7 +452,7 @@
    cd /etc/nginx/sites-available/
    
    #Membuka dan mengedit file konfigurasi
-   nano vm.local
+   sudo nano vm.local
    ```
 
    <p align="center">
@@ -467,7 +473,7 @@
 
    - Halaman vm.local/app nantinya akan diarahkan pada halaman lxc_php5.dev yang telah diatur pada LXC debian_php5.6
    - Halaman vm.local/blog nantinya akan diarahkan pada halaman lxc_php7.dev yang telah diatur pada LXC ubuntu_php7.4
-   - Halaman vm.local/ nantinya akan diarahkan pada halaman lxc_landing.dev yang telah diatur pada LXC ubuntu_landing
+   - Halaman vm.local nantinya akan diarahkan pada halaman lxc_landing.dev yang telah diatur pada LXC ubuntu_landing
 
    e. Mengaktifkan konfigurasi nginx
 
@@ -487,7 +493,7 @@
    #Menyalakan ulang package nginx
    sudo nginx -s reload
    
-   #Mengecek konektivitas dari LXC yang telah dibuat
+   #Mengecek konektivitas URL 
    curl -i http://vm.local
    ```
 
@@ -519,7 +525,7 @@
 
 * Mengapa untuk kebutuhan php5.6 tidak bisa menggunakan ubuntu 16.04, sehingga perlu diganti os ke debian 9? 
 
-  Karena, Ubuntu 16.04 telah beralih ke PHP 7.0 dengan infrastruktur baru untuk paket PHP. Jadi, tidak, Anda tidak dapat menginstal php5 di Ubuntu 16.04, 
+  Karena, Ubuntu 16.04 telah beralih ke PHP 7.0 dengan infrastruktur baru untuk paket PHP. Jadi, kita tidak dapat menginstal php5 di Ubuntu 16.04.
 
 * Kenapa harus menggunakan virtualisasi LXC pada skema website yang akan didevelop?
 
