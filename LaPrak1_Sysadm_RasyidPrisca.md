@@ -272,8 +272,8 @@
     </p>
     
     ```
-    #Menyimpan konfigurasi file (tekan pada keyboard anda)
-    Ctrl+X -> Y -> Enter
+    #Keluar di LXC container
+    exit
     ```
     
     Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ulangi langkah ke 3.
