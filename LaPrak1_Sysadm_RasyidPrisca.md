@@ -141,24 +141,17 @@
     c. Mengatur IP Static sesuai soal praktikum
 
     ```
-    #Menyimpan konfigurasi file (tekan pada keyboard anda)
-    Ctrl+X -> Y -> Enter	
-    ```
-
-    ```
     #Membuka config IP (pada debian_php5.6 base debian 9 atau stretch)
     sudo nano /etc/network/interfaces
-    
-    #Menyimpan konfigurasi file (tekan pada keyboard anda)
-    Ctrl+X -> Y -> Enter
     ```
 
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_8.png?raw=true">
     </p>
+    
     ```
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
-    Ctrl+X -> Y -> Enter
+    Ctrl+X -> Y -> Enter	
     ```
     
     d. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari debian_php5.6
@@ -206,9 +199,9 @@
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
     ```
-    
+
     g. Mengaktifkan konfigurasi nginx
-    
+
     ```
     #Masuk ke direktori sites-enabled
     cd ../sites-enabled
@@ -229,12 +222,12 @@
     h. Menambah isi file hosts
 
     - Menambahkan hosts bernama lxc_php5.dev dengan IP sama seperti localhost agar file konfigurasi yang telah dibuat bisa terdefinisikan
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_13.png?raw=true">
     </p>
     i. Membuka file index.html agar nantinya ketika masuk ke dalam link URL lxc_php5.dev maka keluar sesuai isi dari file tersebut
-    
+
     ```
     #Masuk ke direktori web
     cd /var/www/html
@@ -248,12 +241,12 @@
     #Membuka dan Mengedit isi file
     nano index.html
     ```
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_14.png?raw=true">
     </p>
     j. Menambahkan isi dari index.html agar ketika dibuka menampilkan informasi dari LXC
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_15.png?raw=true">
     </p>
