@@ -192,16 +192,17 @@
     
     - Isi file konfigurasi seperti gambar berikut
     
-    <p align="center">
-    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_11.png?raw=true">
-    </p>
-    ```
-    #Menyimpan konfigurasi file (tekan pada keyboard anda)
-    Ctrl+X -> Y -> Enter
-    ```
-
+      <p align="center">
+      	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_11.png?raw=true">
+      </p>
+    
+      ```
+      #Menyimpan konfigurasi file (tekan pada keyboard anda)
+      Ctrl+X -> Y -> Enter
+      ```
+    
     g. Mengaktifkan konfigurasi nginx
-
+    
     ```
     #Masuk ke direktori sites-enabled
     cd ../sites-enabled
@@ -215,19 +216,19 @@
     #Menyalakan ulang package nginx
     nginx -s reload
     ```
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_12.png?raw=true">
     </p>
     h. Menambah isi file hosts
-
+    
     - Menambahkan hosts bernama lxc_php5.dev dengan IP sama seperti localhost agar file konfigurasi yang telah dibuat bisa terdefinisikan
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_13.png?raw=true">
     </p>
     i. Membuka file index.html agar nantinya ketika masuk ke dalam link URL lxc_php5.dev maka keluar sesuai isi dari file tersebut
-
+    
     ```
     #Masuk ke direktori web
     cd /var/www/html
@@ -241,15 +242,16 @@
     #Membuka dan Mengedit isi file
     nano index.html
     ```
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_14.png?raw=true">
     </p>
     j. Menambahkan isi dari index.html agar ketika dibuka menampilkan informasi dari LXC
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_15.png?raw=true">
     </p>
+    
     ```
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
@@ -271,6 +273,8 @@
     ```
     
     Note : Jika berhasil maka tertulis bahwa HTTP/1.1 200 OK, jika belum berhasil ulangi langkah ke 3.
+    
+    
     
 4. **Setup nginx pada ubuntu_landing untuk domain http://lxc_landing.dev , buat halaman index.html yang menerangkan informasi nama lxc**
 
@@ -294,6 +298,7 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_18.png?raw=true">
    </p>
+
    ```
    #Menyimpan konfigurasi file (tekan pada keyboard anda)
    Ctrl+X -> Y -> Enter
@@ -329,6 +334,7 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_20.png?raw=true">
    </p>
+
    ```
    #Menyimpan konfigurasi file (tekan pada keyboard anda)
    Ctrl+X -> Y -> Enter
@@ -352,6 +358,7 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_22.png?raw=true">
    </p>
+
    ```
    #Menyimpan konfigurasi file (tekan pada keyboard anda)
    Ctrl+X -> Y -> Enter
@@ -366,6 +373,7 @@
    <p align="center">
    	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no4/2021-10-20_23.png?raw=true">
    </p>
+
    ```
    #Keluar di LXC container
    exit
