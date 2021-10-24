@@ -141,8 +141,16 @@
     c. Mengatur IP Static sesuai soal praktikum
 
     ```
+    #Menyimpan konfigurasi file (tekan pada keyboard anda)
+    Ctrl+X -> Y -> Enter	
+    ```
+
+    ```
     #Membuka config IP (pada debian_php5.6 base debian 9 atau stretch)
     sudo nano /etc/network/interfaces
+    
+    #Menyimpan konfigurasi file (tekan pada keyboard anda)
+    Ctrl+X -> Y -> Enter
     ```
 
     <p align="center">
@@ -152,9 +160,9 @@
     #Menyimpan konfigurasi file (tekan pada keyboard anda)
     Ctrl+X -> Y -> Enter
     ```
-
+    
     d. Restart service networking agar IP berganti sesuai yang dikonfigurasi, lalu cek kembali IP dari debian_php5.6
-
+    
     ```
     #Restart service networking pada ubuntu_landing
     reboot
@@ -166,18 +174,18 @@
     #Mengecek IP pada ubuntu_landing
     note:IP telah berganti menjadi 10.0.3.103 sesuai ketentuan soal
     ```
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_9.png?raw=true">
     </p>
     e. Menginstall package nginx untuk proxy server
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_10.png?raw=true">
     </p>
-
+    
     f. Masuk ke dalam direktori nginx, kemudian buat file konfigurasi lxc_php5.6.dev
-
+    
     ```
     #Masuk ke dalam direktori nginx
     cd /etc/nginx/sites-available/
@@ -188,9 +196,9 @@
     #Membuka dan mengedit file konfigurasi
     nano lxc_php5.6.dev
     ```
-
+    
     - Isi file konfigurasi seperti gambar berikut
-
+    
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_11.png?raw=true">
     </p>
@@ -214,12 +222,12 @@
     #Menyalakan ulang package nginx
     nginx -s reload
     ```
-    
+
     <p align="center">
     	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak1/no3/2021-10-20_12.png?raw=true">
     </p>
     h. Menambah isi file hosts
-    
+
     - Menambahkan hosts bernama lxc_php5.dev dengan IP sama seperti localhost agar file konfigurasi yang telah dibuat bisa terdefinisikan
     
     <p align="center">
