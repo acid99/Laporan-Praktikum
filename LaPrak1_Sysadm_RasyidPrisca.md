@@ -398,6 +398,9 @@
    #Mengecek kondisi LXC
    lxc-ls -f
    
+   #Masuk ke root
+   sudo su
+   
    #Menambahkan kodingan konfigurasi ubuntu_landing
    echo "lxc.start.auto = 1" >> /var/lib/lxc/ubuntu_landing/config
    
