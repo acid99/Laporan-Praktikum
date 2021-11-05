@@ -243,6 +243,9 @@
     #Menyalin file default index nginx ke direktori yang telah dibuat
     cp index.nginx-debian.html lxc_php5.6/index.html
     
+    #Membuka direktori LXC
+    cd lxc_php5.6
+    
     #Membuka dan Mengedit isi file
     nano index.html
     ```
@@ -348,7 +351,7 @@
 
    ```
    #Masuk ke direktori web
-   cd /var/www/html
+   cd /var/www/html/lxc_php5.6
    
    #Membuka dan Mengedit isi file
    nano index.html
