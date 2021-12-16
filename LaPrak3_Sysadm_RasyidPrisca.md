@@ -25,6 +25,18 @@ Create SubDomain dev.vm.local with rules :
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_1.png?raw=true">
   </p>
 
+  ```
+  ---
+  - hosts: all
+    become : yes
+    tasks:
+      - name: install bind9 dan dnsutils
+        apt:
+         pkg:
+           - bind9
+           - dnsutils
+  ```
+
 * The next step is install packages with ansible
 
   <p align="center">
@@ -37,17 +49,57 @@ Create SubDomain dev.vm.local with rules :
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_3.png?raw=true">
   </p>
-  
+
   ```
   ---
   - hosts: all
     become : yes
     tasks:
-      - name: install bind9 dan dnsutils
-        apt:
-         pkg:
-           - bind9
-           - dnsutils
+     - name: membuat direktori
+       file:
+        path: /var/www/html/dev/landing
+        state: directory
+     - name: copy file vm.local
+       copy:
+        src: /etc/bind/vm/vm.local
+        dest: /var/www/html/dev/landing
+     - name: mengganti konfigurasi
+       replace:
+        path: /var/www/html/dev/landing/vm.local
+        regexp: 'www'
+        replace: 'dev'
+     - name: copy file named.conf.local
+       copy:
+        src: /etc/bind/named.conf.local
+        dest: /etc/bind/named.conf.local
+     - name: mengganti konfigurasi conf local
+       replace:
+        path: /etc/bind/named.conf.local
+        regexp: '/etc/bind/vm/vm.local'
+        replace: '/var/www/html/dev/landing/vm.local'
+     - name: mengganti konfigurasi conf local part2
+       replace:
+        path: /etc/bind/named.conf.local
+        regexp: '/etc/bind/vm/115.168.192.in-addr.arpa'
+        replace: '/var/www/html/dev/landing/115.168.192.in-addr.arpa'
+     - name: copy file 115.168.192.in-addr.arpa
+       copy:
+        src: /etc/bind/vm/115.168.192.in-addr.arpa
+        dest: /var/www/html/dev/landing
+     - name: copy file resolv.conf
+       copy:
+        src: /etc/resolv.conf
+        dest: /etc/resolv.conf
+     - name: copy file named.conf.options
+       copy:
+        src: /etc/bind/named.conf.options
+        dest: /etc/bind/named.conf.options
+     - name: restart nginx
+       service:
+        name: nginx
+        state: restarted
+     - name: restart bind9
+       action: service name=bind9 state=restarted
   ```
 
 * Do the installation using the script below
