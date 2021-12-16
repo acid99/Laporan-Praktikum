@@ -21,34 +21,15 @@ Create SubDomain dev.vm.local with rules :
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15.png?raw=true">
   </p>
-
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_1.png?raw=true">
   </p>
 
-
-
-
-
-* The next step is re-install
+* The next step is install package with ansible
 
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_2.png?raw=true">
   </p>
-
-
-
-```markdown
-  ---
-- hosts: all
-  become : yes
-  tasks:
-    - name: install bind9 dan dnsutils
-      apt:
-       pkg:
-         - bind9
-         - dnsutils
-```
 
 
 * Create e config.yml file
@@ -56,19 +37,29 @@ Create SubDomain dev.vm.local with rules :
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_3.png?raw=true">
   </p>
-
-
+  
+  ```
+  ---
+  - hosts: all
+    become : yes
+    tasks:
+      - name: install bind9 dan dnsutils
+        apt:
+         pkg:
+           - bind9
+           - dnsutils
+  ```
 
 * Do the installation using the script below
 
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_4(fix).png?raw=true">
   </p>
-
+  
   
 
   ```markdown
-    ---
+  ---
   - hosts: all
     become : yes
     tasks:
@@ -119,15 +110,11 @@ Create SubDomain dev.vm.local with rules :
        action: service name=bind9 state=restarted
   ```
 
-
-
 * Add subdomain to /etc/hosts
 
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_5.png?raw=true">
   </p>
-
-
 
 * Open vm.local file
 
@@ -135,20 +122,48 @@ Create SubDomain dev.vm.local with rules :
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_6.png?raw=true">
   </p>
 
-
-
-* Add line www
+* Add line www. After that exit lxc
 
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_7.png?raw=true">
   </p>
 
-
-
-* The last step is exit
+* Open and edit vm.local in directory /etc/nginx/sites-enabled/
 
   <p align="center">
-        	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_8.png?raw=true">
+        	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_9.png?raw=true">
   </p>
 
+  <p align="center">
+        	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_10.png?raw=true">
+  </p>
   
+* Open and edit vm.local in directory /etc/bind/vm/
+
+  <p align="center">
+        	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-16.png?raw=true">
+  </p>
+
+* Restart all package
+
+  <p align="center">
+        	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-16_1.png?raw=true">
+  </p>
+
+- Open Wifi Settings (in the case we use linux os), add dns server and uncheck automatic at menu Ipv4
+
+  <p align="center">
+        	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-16_3.png?raw=true">
+  </p>
+
+- At menu IPv6, check disabled (we must turn off the IPv6), and then click apply
+
+  <p align="center">
+        	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-16_4.png?raw=true">
+  </p>
+
+- Just reconnecting the wifi, and check dev.vm.local on ther browser :)
+
+  <p align="center">
+        	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-16_2.png?raw=true">
+  </p>
