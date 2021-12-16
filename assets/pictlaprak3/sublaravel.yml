@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become : yes
+  tasks:
+    - name: install bind9 dan dnsutils
+      apt:
+       pkg:
+         - bind9
+         - dnsutils
+
