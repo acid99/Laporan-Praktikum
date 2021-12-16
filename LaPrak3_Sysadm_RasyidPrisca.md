@@ -1,4 +1,4 @@
-# **Modul 3 Practicum Report**
+# **Module 3 Practicum Report**
 
 ## **By : Rasyid Sabilillah & Catharina Prisca**
 
@@ -25,7 +25,7 @@ Create SubDomain dev.vm.local with rules :
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_1.png?raw=true">
   </p>
 
-* The next step is install package with ansible
+* The next step is install packages with ansible
 
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-15_2.png?raw=true">
@@ -144,7 +144,7 @@ Create SubDomain dev.vm.local with rules :
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-16.png?raw=true">
   </p>
 
-* Restart all package
+* Restart all packages
 
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-16_1.png?raw=true">
@@ -162,7 +162,7 @@ Create SubDomain dev.vm.local with rules :
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-16_4.png?raw=true">
   </p>
 
-- Just reconnecting the wifi, and check dev.vm.local on ther browser :)
+- Just reconnecting the wifi, and check dev.vm.local on the browser :)
 
   <p align="center">
         	<img src= "https://github.com/acid99/Sistem-Administrasi-Server/blob/main/assets/laprak3/2021-12-16_2.png?raw=true">
