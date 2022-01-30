@@ -1,0 +1,38 @@
+---
+- hosts: all
+  become : yes
+  vars:
+    domain: 'LXC_LARAVEL.dev'
+  tasks:
+   - name: Write {{ domain }} to /etc/hosts
+     lineinfile:
+      dest: /etc/hosts
+      regexp: '.*{{ domain }}$'
+      line: "127.0.0.1 {{ domain }}"
+      state: present
+   - name: ensure nginx is at the latest version
+     apt: name=nginx state=latest
+   - name: start nginx
+     service:
+      name: nginx
+      state: started
+   - name: copy the nginx config file 
+     copy:
+      src: ~/ansible/laravel/LXC_LARAVEL.dev
+      dest: /etc/nginx/sites-available/LXC_LARAVEL.dev
+   - name: Symlink LXC_LARAVEL.dev
+     command: ln -sfn /etc/nginx/sites-available/LXC_LARAVEL.dev /etc/nginx/sites-enabled/LXC_LARAVEL.dev
+     args:
+      warn: false
+   - name: restart nginx
+     service:
+      name: nginx
+      state: restarted
+   - name: restart php7
+     service:
+      name: php7.4-fpm
+      state: restarted
+   - name: curl web
+     command: curl -i http://LXC_LARAVEL.dev
+     args:
+      warn: false

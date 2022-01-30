@@ -1,0 +1,6 @@
+[ci]
+LXC_CI ansible_host=LXC_CI.dev ansible_ssh_user=root ansible_become_pass=a
+
+
+[database]
+LXC_DB_SERVER ansible_host=LXC_DB_SERVER.dev ansible_ssh_user=root ansible_become_pass=a

@@ -1,0 +1,60 @@
+---
+- hosts: all
+  become : yes
+  tasks:
+   - name: Download and install Composer
+     shell: curl -sS https://getcomposer.org/installer | php
+     args:
+      chdir: /usr/src/
+      creates: /usr/local/bin/composer
+      warn: false
+   - name: Add Composer to global path
+     copy:
+      dest: /usr/local/bin/composer
+      group: root
+      mode: '0755'
+      owner: root
+      src: /usr/src/composer.phar
+      remote_src: yes
+   - name: Composer create project
+     become_user: root
+     composer:
+      command: create-project
+      arguments: laravel/laravel laravel 
+      working_dir: /var/www/html
+      prefer_dist: yes
+     environment:
+        COMPOSER_NO_INTERACTION: "1"
+   - name: mengkopi file .env.example jadi .env
+     copy:
+      dest: /var/www/html/laravel/.env.example
+      src: /var/www/html/laravel/.env
+      remote_src: yes
+   - name: mengganti konfigurasi .env
+     lineinfile:
+      path: /var/www/html/laravel/.env
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+      backrefs: yes
+     loop:
+      - { regexp: '^(.*)DB_HOST(.*)$', line: 'DB_HOST=10.0.3.200' }
+      - { regexp: '^(.*)DB_DATABASE(.*)$', line: 'DB_DATABASE=laravel' }
+      - { regexp: '^(.*)DB_USERNAME(.*)$', line: 'DB_USERNAME=admin' }
+      - { regexp: '^(.*)DB_PASSWORD(.*)$', line: 'DB_PASSWORD=a' }
+      - { regexp: '^(.*)APP_URL(.*)$', line: 'APP_URL=http://kelompok08.fpsas' }
+      - { regexp: '^(.*)APP_NAME=(.*)$', line: 'APP_NAME=laravel' }
+   - name: Composer install ke laravel
+     composer:
+       command: install
+       working_dir: /var/www/html/laravel
+     environment:
+       COMPOSER_NO_INTERACTION: "1"
+   - name: generate php artisan
+     args:
+      chdir: /var/www/html/laravel
+     shell: php artisan key:generate
+   - name: mengganti permission storage
+     file:
+      path: /var/www/html/laravel/storage
+      mode: 0777
+      recurse: yes

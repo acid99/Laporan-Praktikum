@@ -1,0 +1,104 @@
+---
+- hosts: all
+  become : yes
+  vars:
+    domain: 'LXC_YII.dev'
+  tasks:
+    - name: install nginx nginx extras
+      apt:
+       pkg:
+         - nginx
+         - nginx-extras
+       state: latest
+    - name: stop apache2
+      service:
+       name: apache2
+       state: stopped
+       enabled: no
+    - name: start nginx
+      service:
+       name: nginx
+       state: started
+    - name: menginstall tools
+      apt:
+       pkg:
+         - curl
+         - software-properties-common
+         - unzip
+       state: latest
+    - name: "Repo PHP 7.4"
+      apt_repository:
+        repo="ppa:ondrej/php"
+    - name: "Updating the repo"
+      apt: update_cache=yes
+    - name: Installation PHP 7.4
+      apt: name=php7.4 state=present
+    - name: install php untuk yii
+      apt:
+       pkg:
+          - php7.4-fpm
+          - php7.4-mysql
+          - php7.4-mbstring
+          - php7.4-xml
+          - php7.4-bcmath
+          - php7.4-json
+          - php7.4-zip
+          - php7.4-common
+          - php7.4-curl
+          - php7.4-cli
+       state: present
+    - name: Download and install Composer
+      shell: curl -sS https://getcomposer.org/installer | php
+      args:
+       chdir: /usr/src/
+       creates: /usr/local/bin/composer
+       warn: false
+    - name: Add Composer to global path
+      copy:
+       dest: /usr/local/bin/composer
+       group: root
+       mode: '0755'
+       owner: root
+       src: /usr/src/composer.phar
+       remote_src: yes
+    - name: Composer create project
+      become_user: root
+      composer:
+       command: create-project
+       arguments: yiisoft/yii2-app-basic yii 
+       working_dir: /var/www/html
+       prefer_dist: yes
+      environment:
+         COMPOSER_NO_INTERACTION: "1"
+    - name: Write {{ domain }} to /etc/hosts
+      lineinfile:
+       dest: /etc/hosts
+       regexp: '.*{{ domain }}$'
+       line: "127.0.0.1 {{ domain }}"
+       state: present
+    - name: ensure nginx is at the latest version
+      apt: name=nginx state=latest
+    - name: start nginx
+      service:
+       name: nginx
+       state: started
+    - name: copy the nginx config file 
+      copy:
+       src: ~/ansible/yii/LXC_YII.dev
+       dest: /etc/nginx/sites-available/LXC_YII.dev
+    - name: Symlink LXC_YII.dev
+      command: ln -sfn /etc/nginx/sites-available/LXC_YII.dev /etc/nginx/sites-enabled/LXC_YII.dev
+      args:
+       warn: false
+    - name: restart nginx
+      service:
+       name: nginx
+       state: restarted
+    - name: restart php7
+      service:
+       name: php7.4-fpm
+       state: restarted
+    - name: curl web
+      command: curl -i http://LXC_YII.dev
+      args:
+       warn: false

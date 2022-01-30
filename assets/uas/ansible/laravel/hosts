@@ -1,0 +1,2 @@
+[laravel]
+LXC_LARAVEL ansible_host=LXC_LARAVEL.dev ansible_ssh_user=root ansible_become_pass=a

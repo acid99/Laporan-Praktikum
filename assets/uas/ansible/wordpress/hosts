@@ -1,0 +1,2 @@
+[wordpress]
+LXC_WORDPRESS ansible_host=LXC_WORDPRESS.dev ansible_ssh_user=root ansible_become_pass=a

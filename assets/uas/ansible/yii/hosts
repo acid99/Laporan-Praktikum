@@ -1,0 +1,2 @@
+[yii]
+LXC_YII ansible_host=LXC_YII.dev ansible_ssh_user=root ansible_become_pass=a
